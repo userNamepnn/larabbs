@@ -35,7 +35,7 @@ class UsersController extends Controller
         //$file = $request->avatar;
         $data = $request->all();
         if ($request->avatar) {
-            $result = $imgHandler->save($request->avatar, 'avatars', $user->id);
+            $result = $imgHandler->save($request->avatar, 'avatars', $user->id, 416);
             if ($result) {
                 $data['avatar'] = $result['path'];
             }
