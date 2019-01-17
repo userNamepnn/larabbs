@@ -23,8 +23,12 @@ class TopicsController extends Controller
         return view('topics.index', compact('topics'));
     }
 
-    public function show(Topic $topic)
+    public function show(Topic $topic, Request $request)
     {
+        // URL 矫正
+        if (!empty($topic->slug) && $topic->slug != $request->slug) {
+            return redirect($topic->link(), 301);
+        }
         return view('topics.show', compact('topic'));
     }
 
@@ -39,7 +43,7 @@ class TopicsController extends Controller
         $topic->fill($request->all());
         $topic->user_id = Auth::id();
         $topic->save();
-        return redirect()->route('topics.show', $topic->id)->with('success', '创建成功！');
+        return redirect()->to($topic->link())->with('success', '成功创建话题！');
     }
 
     public function edit(Topic $topic)
@@ -53,16 +57,14 @@ class TopicsController extends Controller
     {
         $this->authorize('update', $topic);
         $topic->update($request->all());
-
-        return redirect()->route('topics.show', $topic->id)->with('success', '更新成功');
+        return redirect()->to($topic->link())->with('success', '更新成功');
     }
 
     public function destroy(Topic $topic)
     {
         $this->authorize('destroy', $topic);
         $topic->delete();
-
-        return redirect()->route('topics.index')->with('success', '成功删除');
+        return redirect()->to($topic->link())->with('success', '成功删除');
     }
 
     /**
@@ -80,7 +82,7 @@ class TopicsController extends Controller
         ];
         if ($request->upload_file) {
             $result = $uploadHandler->save($request->upload_file, 'topics', \Auth::id(), 1024);
-            if ($result){
+            if ($result) {
                 $response = [
                     'success' => true,
                     'msg' => '上传成功!',
