@@ -1,7 +1,5 @@
-
 // Variables
 @import 'variables';
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
@@ -69,9 +67,9 @@ body {
 }
 
 /* Topic Index Page */
-.topics-index-page {
+.topics-index-page, .categories-show-page {
   .topic-list {
-    .nav>li>a {
+    .nav > li > a {
       position: relative;
       display: block;
       padding: 5px 14px;
