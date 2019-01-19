@@ -38,4 +38,9 @@ class User extends Authenticatable implements MustVerifyEmailContract
         // 使用$user->topics获取用户发布的话题
         return $this->hasMany(Topic::class);
     }
+
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
 }
