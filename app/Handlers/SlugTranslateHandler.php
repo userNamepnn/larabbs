@@ -9,7 +9,7 @@
 namespace App\Handlers;
 
 use GuzzleHttp\Client;
-use Overtrue\Pinyin\Pingyin;
+use Overtrue\Pinyin\Pinyin;
 
 class SlugTranslateHandler
 {
@@ -54,6 +54,11 @@ class SlugTranslateHandler
         }
     }
 
+    /**
+     * [pinyin description]
+     * @param  [type] $text [description]
+     * @return [type]       [description]
+     */
     public function pinyin($text)
     {
         return str_slug(app(Pinyin::class)->permalink($text));
