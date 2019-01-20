@@ -34,13 +34,11 @@
             </a>
           </li>
           {{-- 消息通知标记 --}}
-                    <li>
-                        <a href="{{ route('notifications.index') }}" class="notifications-badge" style="margin-top: -2px;">
-                            <span class="badge badge-{{ Auth::user()->notification_count > 0 ? 'hint' : 'fade' }} " title="消息提醒">
-                                {{ Auth::user()->notification_count }}
-                            </span>
-                        </a>
-                    </li>
+          <li class="nav-item notification-badge">
+            <a class="nav-link mr-3 badge badge-pill badge-{{ Auth::user()->notification_count > 0 ? 'hint' : 'secondary' }} text-white" href="{{ route('notifications.index') }}">
+              {{ Auth::user()->notification_count }}
+            </a>
+          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img src="{{ \Auth::user()->avatar }}" class="img-responsive img-circle" width="30px" height="30px">
