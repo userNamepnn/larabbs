@@ -2,20 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmailContract
 {
-    use MustVerifyEmailTrait,HasRoles;
+    use MustVerifyEmailTrait, HasRoles;
 
     /**
      * 定制notify方法
      */
-    use Notifiable{
+    use Notifiable {
         notify as protected laravelNotify;
     }
 
@@ -62,15 +62,46 @@ class User extends Authenticatable implements MustVerifyEmailContract
         return $this->hasMany(Topic::class);
     }
 
+    /**
+     * 用户-回复 一对多
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function replies()
     {
         return $this->hasMany(Reply::class);
     }
 
+    /**
+     * 清除未读消息
+     */
     public function markAsRead()
     {
         $this->notification_count = 0;
         $this->save();
         $this->unreadNotifications->markAsRead();
+    }
+
+    /**
+     * 用户密码字段修改器  set{属性的驼峰式命名}Attribute 非60长度字符串则为后台修改=》加密
+     * @param $value
+     */
+    public function setPassWordAttribute($value)
+    {
+        if (60 !== strlen($value)) {
+            $value = bcrypt($value);
+        }
+        $this->attributes['password'] = $value;
+    }
+
+    /**
+     * 用户头像字段修改器 无http字符串则为后台上传=》拼接完整url
+     * @param $path
+     */
+    public function setAvatarAttribute($path)
+    {
+        if (!starts_with($path, 'http')) {
+            $path = config('app.url') . "/uploads/images/avatars/{$path}";
+        }
+        $this->attributes['avatar'] = $path;
     }
 }
