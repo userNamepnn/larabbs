@@ -72,6 +72,9 @@ return array(
         '站点管理' => [
             'settings.site',
         ],
+        '资源管理' => [
+            'links',
+        ],
     ],
 
     /*
