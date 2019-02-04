@@ -8,6 +8,11 @@ use App\Models\User;
 
 class UsersController extends Controller
 {
+    /**
+     * 用户注册接口
+     * @param UserRequest $request
+     * @return \Dingo\Api\Http\Response|void
+     */
     public function store(UserRequest $request)
     {
         $verifyData = \Cache::get($request->verification_key);

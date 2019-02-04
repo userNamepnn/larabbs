@@ -7,6 +7,12 @@ use Overtrue\EasySms\EasySms;
 
 class VerificationCodesController extends Controller
 {
+    /**
+     * 发送验证码
+     * @param VerificationCodeRequest $request
+     * @param EasySms $easySms
+     * @throws \Overtrue\EasySms\Exceptions\InvalidArgumentException
+     */
     public function store(VerificationCodeRequest $request, EasySms $easySms)
     {
         $phone = $request->phone;
