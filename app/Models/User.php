@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use Auth;
 use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable implements MustVerifyEmailContract
+class User extends Authenticatable implements MustVerifyEmailContract, JWTSubject
 {
     use MustVerifyEmailTrait, HasRoles;
     use Traits\ActiveUserHelper;
@@ -24,7 +26,7 @@ class User extends Authenticatable implements MustVerifyEmailContract
     public function notify($instance)
     {
         // 如果要通知的人是当前用户，就不必通知了！
-        if ($this->id == \Auth::id()) {
+        if ($this->id == Auth::id()) {
             return;
         }
 
@@ -105,5 +107,15 @@ class User extends Authenticatable implements MustVerifyEmailContract
             $path = config('app.url') . "/uploads/images/avatars/{$path}";
         }
         $this->attributes['avatar'] = $path;
+    }
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }
