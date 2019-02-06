@@ -15,7 +15,18 @@ class VerificationCodesController extends Controller
      */
     public function store(VerificationCodeRequest $request, EasySms $easySms)
     {
-        $phone = $request->phone;
+        //获取缓存验证码数据
+        $captchaData = \Cache::get($request->captcha_key);
+        if (!$captchaData) {
+            return $this->response->error('图片验证码已失效', 422);
+        }
+
+        //验证验证码输入
+        if (!hash_equals($captchaData['code'], $request->captcha_code)) {
+            return $this->response->errorUnauthorized('验证码错误');
+        }
+
+        $phone = $captchaData['phone'];
 
         //若非配置发送真实短信,则发送1234
         if (false === env('REALLY_SEND')) {
@@ -34,9 +45,12 @@ class VerificationCodesController extends Controller
         }
 
         //缓存验证码,10分钟
-        $key = 'verificationCOde_' . str_random(15);
+        $key = 'verificationCode_' . str_random(15);
         $expire_at = now()->addMinutes(10);
         \Cache::put($key, ['phone' => $phone, 'code' => $code], $expire_at);
+
+        //清除图片验证码缓存
+        \Cache::forget($request->captcha_key);
         return $this->response->array([
             'key' => $key,
             'expire_at' => $expire_at->toDateTimeString(),
