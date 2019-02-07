@@ -56,6 +56,14 @@ $api->version('v1', [
         $api->get('categories', 'CategoriesController@index')
             ->name('api.categories.index');
 
+        //获取话题列表
+        $api->get('topics', 'TopicsController@index')
+        ->name('api.topics.index');
+
+        //获取某用户发布的话题
+        $api->get('users/{user}/topics', 'TopicsController@userindex')
+            ->name('api.users.topics.index');
+
         /***************************需要token验证的接口********************************/
         $api->group(['middleware' => 'api.auth'], function ($api) {
             //当前用户登录信息
