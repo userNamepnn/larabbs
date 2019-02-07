@@ -40,4 +40,19 @@ class TopicsController extends Controller
 
         return $this->response->item($topic, $transformer);
     }
+
+    /**
+     * 删除话题
+     * @param Topic $topic
+     * @return \Dingo\Api\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function destroy(Topic $topic)
+    {
+        $this->authorize('destroy', $topic);
+
+        $topic->delete();
+
+        return $this->response->noContent();
+    }
 }
