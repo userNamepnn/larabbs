@@ -64,6 +64,9 @@ $api->version('v1', [
         $api->get('users/{user}/topics', 'TopicsController@userindex')
             ->name('api.users.topics.index');
 
+        $api->get('topics/{topic}', 'TopicsController@show')
+            ->name('api.topic.show');
+
         /***************************需要token验证的接口********************************/
         $api->group(['middleware' => 'api.auth'], function ($api) {
             //当前用户登录信息
