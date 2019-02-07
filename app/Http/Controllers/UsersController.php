@@ -35,6 +35,14 @@ class UsersController extends Controller
         return view('users.edit', compact('user'));
     }
 
+    /**
+     * 更新个人信息
+     * @param UserRequest $request
+     * @param ImageUploadHandler $imgHandler
+     * @param User $user
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
     public function update(UserRequest $request, ImageUploadHandler $imgHandler, User $user)
     {
         $this->authorize('update', $user);

@@ -14,7 +14,8 @@
 $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', [
-    'namespace' => 'App\Http\Controllers\Api'
+    'namespace' => 'App\Http\Controllers\Api',
+    'middleware' => 'serializer:array',
 ], function ($api) {
 
     $api->group([
@@ -49,6 +50,21 @@ $api->version('v1', [
         //刷新token
         $api->delete('authorizations/current', 'AuthorizationsController@destroy')
             ->name('api.authorizations.destroy');
+
+        //需要token验证的接口
+        $api->group(['middleware' => 'api.auth'], function ($api) {
+            //当前用户登录信息
+            $api->post('user', 'UsersController@me')
+                ->name('api.user.show');
+
+            //上传头像
+            $api->post('images', 'ImagesController@store')
+                ->name('api.images.store');
+
+            //编辑用户信息
+            $api->patch('user', 'UsersController@update')
+                ->name('api.user.update');
+        });
     });
 
 });
