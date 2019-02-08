@@ -58,7 +58,7 @@ $api->version('v1', [
 
         //获取话题列表
         $api->get('topics', 'TopicsController@index')
-        ->name('api.topics.index');
+            ->name('api.topics.index');
 
         //获取某用户发布的话题
         $api->get('users/{user}/topics', 'TopicsController@userindex')
@@ -97,7 +97,9 @@ $api->version('v1', [
             $api->post('topics/{topic}/replies', 'RepliesController@store')
                 ->name('api.topics.replies.store');
 
-            //
+            //删除回复
+            $api->delete('topics/{topic}/replies/{reply}', 'RepliesController@destroy')
+                ->name('api.topics.replies.destroy');
         });
     });
 
