@@ -27,4 +27,9 @@ class ReplyTransformer extends TransformerAbstract
         //$this->collection() 返回集合资源
         return $this->item($reply->user, new UserTransformer);
     }
+
+    public function includeTopic(Reply $reply)
+    {
+        return $this->item($reply->topic, new TopicTransformer());
+    }
 }
