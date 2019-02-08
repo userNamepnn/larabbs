@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-
 use App\Http\Requests\Api\UserRequest;
 use App\Models\Image;
 use App\Models\User;
@@ -51,6 +50,11 @@ class UsersController extends Controller
         return $this->response->item($this->user(), new UserTransformer());
     }
 
+    /**
+     * 更新用户信息
+     * @param UserRequest $request
+     * @return \Dingo\Api\Http\Response
+     */
     public function update(UserRequest $request)
     {
         $user = $this->user();
@@ -65,5 +69,15 @@ class UsersController extends Controller
         $user->update($attributes);
 
         return $this->response->item($user, new UserTransformer());
+    }
+
+    /**
+     * 活跃用户列表
+     * @param User $user
+     * @return \Dingo\Api\Http\Response
+     */
+    public function activedIndex(User $user)
+    {
+        return $this->response->collection($user->getActiveUsers(), new UserTransformer);
     }
 }
