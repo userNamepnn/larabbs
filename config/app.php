@@ -177,7 +177,8 @@ return [
 
         //云片短信服务
         App\Providers\EasySmsServiceProvider::class,
-
+        //极光推送服务
+        App\Providers\JpushServiceProvider::class,
     ],
 
     /*
