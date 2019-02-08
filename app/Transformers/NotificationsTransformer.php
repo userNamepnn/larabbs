@@ -7,7 +7,7 @@ use League\Fractal\TransformerAbstract;
 
 class NotificationsTransformer extends TransformerAbstract
 {
-    protected $availableIncludes = ['user', 'topic'];
+    protected $availableIncludes = [];
 
     public function transform(DatabaseNotification $notification)
     {

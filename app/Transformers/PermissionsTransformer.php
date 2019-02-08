@@ -13,7 +13,7 @@ use Spatie\Permission\Models\Permission;
 
 class PermissionsTransformer extends TransformerAbstract
 {
-    protected $availableIncludes = ['user', 'topic'];
+    protected $availableIncludes = [];
 
     public function transform(Permission $permission)
     {

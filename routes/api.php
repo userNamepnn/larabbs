@@ -125,6 +125,10 @@ $api->version('v1', [
             //当前登录用户权限列表
             $api->get('user/permissions', 'PermissionsController@index')
                 ->name('api.users.permissions.index');
+
+            //获取当前登录用户角色列表
+            $api->get('user/roles', 'RolesController@index')
+                ->name('api.users.roles.index');
         });
     });
 
