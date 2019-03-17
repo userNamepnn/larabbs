@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f20d1a5f-6e5d-4d3c-8b0d-eba026158877" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/UsersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-    </list>
+    <list default="true" id="f20d1a5f-6e5d-4d3c-8b0d-eba026158877" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,8 +20,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/UsersController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="727">
-              <caret line="105" column="7" lean-forward="true" selection-start-line="105" selection-start-column="7" selection-end-line="105" selection-end-column="7" />
+            <state relative-caret-position="651">
+              <caret line="141" column="1" lean-forward="true" selection-start-line="141" selection-start-column="1" selection-end-line="141" selection-end-column="1" />
               <folding>
                 <element signature="e#212#317#0#PHP" />
                 <element signature="e#322#1271#0#PHP" />
@@ -416,7 +411,7 @@
       <workItem from="1552097936042" duration="87000" />
       <workItem from="1552813436378" duration="4000" />
       <workItem from="1552813541988" duration="1243000" />
-      <workItem from="1552834751450" duration="1062000" />
+      <workItem from="1552834751450" duration="1737000" />
     </task>
     <task id="LOCAL-00001" summary="123">
       <created>1550495966780</created>
@@ -429,7 +424,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="151153000" />
+    <option name="totallyTimeSpent" value="151828000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -444,7 +439,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49838188" visible="true" weight="0.18230277" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49838188" visible="true" weight="0.18230277" />
       <window_info id="npm" order="1" sideWeight="0.50161815" side_tool="true" weight="0.25" />
       <window_info id="Version Control" order="2" weight="0.32995737" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -456,7 +451,7 @@
       <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.32804233" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.6453252" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.64508927" />
       <window_info anchor="bottom" id="Thumbnails" order="10" weight="0.329718" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info anchor="bottom" id="Messages" order="12" />
@@ -960,8 +955,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/UsersController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="727">
-          <caret line="105" column="7" lean-forward="true" selection-start-line="105" selection-start-column="7" selection-end-line="105" selection-end-column="7" />
+        <state relative-caret-position="651">
+          <caret line="141" column="1" lean-forward="true" selection-start-line="141" selection-start-column="1" selection-end-line="141" selection-end-column="1" />
           <folding>
             <element signature="e#212#317#0#PHP" />
             <element signature="e#322#1271#0#PHP" />
