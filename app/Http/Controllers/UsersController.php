@@ -25,9 +25,13 @@ class UsersController extends Controller
     }
 
     /**
-     * 编辑个人信息页面
+     * [edit description] 编辑个人信息页面
+     * @Author: panninan
+     * @Date: 2019/3/17
+     * @Time: 23:02
      * @param User $user
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function edit(User $user)
     {

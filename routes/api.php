@@ -48,6 +48,10 @@ $api->version('v1', [
         $api->post('weapp/authorizations', 'AuthorizationsController@weappStore')
             ->name('api.weapp.authorizations.store');
 
+        // 小程序注册
+        $api->post('weapp/users', 'UsersController@weappStore')
+            ->name('api.weapp.users.store');
+
         //删除token
         $api->put('authorizations/current', 'AuthorizationsController@update')
             ->name('api.authorizations.deetroy');
@@ -91,7 +95,7 @@ $api->version('v1', [
         /***************************需要token验证的接口********************************/
         $api->group(['middleware' => 'api.auth'], function ($api) {
             //当前用户登录信息
-            $api->post('user', 'UsersController@me')
+            $api->get('user', 'UsersController@me')
                 ->name('api.user.show');
 
             //上传头像
