@@ -3,5 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../laravel-shop" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../vuejs-essential" vcs="Git" />
+    <mapping directory="D:/phpStudy/PHPTutorial/WWW/tp5" vcs="Git" />
   </component>
 </project>
